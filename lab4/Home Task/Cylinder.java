@@ -43,7 +43,7 @@ public class Cylinder {
 
 // computeArea
   public float computeArea(){
-    return (22/7)*(Math.pow(radius, 2));
+     return (22/7)* (float) (Math.pow(radius, 2));
   }
 
 // computeVolume
