@@ -13,21 +13,18 @@ class RandomCharacter {
     }
 
     public static char getRandomCharacter(char ch1, char ch2) {
-        return Math.random() < .5 ? ch1 : ch2;
+        return (char)(Math.random() * (max-min +1) +min);
     }
 
     public static char getRandomLowerCase() {
-        int max = 122, min = 97;
-        return (char) (Math.random() * (max - min + 1) + min);
+        return getRandomCharacter('a', 'z');
     }
 
     public static char getRandomUpperCase() {
-        int max = 67, min = 90;
-        return (char) (Math.random() * (max - min + 1) + min);
+        return getRandomCharacter('A', 'Z');
     }
 
     public static char getRandomDigit() {
-        int max = 48, min = 57;
-        return (char) (Math.random() * (max - min + 1) + min);
+        return getRandomCharacter('0', '9');
     }
 }
