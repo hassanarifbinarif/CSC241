@@ -2,7 +2,7 @@ import java.time.Duration;
 import java.time.LocalTime;
 import java.util.Scanner;
 
-public class Sessional1 {
+public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         StopWatch stopWatch = new StopWatch();
@@ -24,27 +24,19 @@ class StopWatch {
         this.startTime = LocalTime.now();
     }
 
-    public LocalTime getStartTime() {
-        return startTime;
-    }
-
-    public LocalTime getEndTime() {
-        return endTime;
-    }
-
-    public void start() {
+    void start() {
         this.startTime = LocalTime.now();
     }
 
-    public void stop() {
+    void stop() {
         this.endTime = LocalTime.now();
     }
 
-    public int getElapsedTime() {
+    int getElapsedTime() {
         return (int) Duration.between(startTime, endTime).toMillis();
     }
 
     public boolean equals(StopWatch obj) {
-        return startTime.equals(obj.getStartTime()) && endTime.equals(obj.getEndTime());
+        return startTime.equals(obj.startTime) && endTime.equals(obj.endTime);
     }
 }
