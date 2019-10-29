@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Lab9 {
+public class Lab10 {
     public static void main(String[] args) {
         ChoiceQuestion question1 = new ChoiceQuestion();
         question1.addChoice("Answer 1", false);
