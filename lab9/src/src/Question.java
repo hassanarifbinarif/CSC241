@@ -1,4 +1,4 @@
-class Question extends ChoiceQuestion {
+class Question{
     private String text;
     private String answer;
 
@@ -21,9 +21,7 @@ class Question extends ChoiceQuestion {
         return a.equals(this.answer);
     }
 
-    @Override
     public void display() {
         System.out.println(this.text);
-        super.display();
     }
 }

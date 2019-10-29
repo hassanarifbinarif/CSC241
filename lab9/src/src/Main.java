@@ -1,18 +1,24 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
+
+    private static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
-        ChoiceQuestion question1 = new ChoiceQuestion();
-        question1.addChoice("Answer 1", false);
-        question1.addChoice("Answer 2", false);
-        question1.display();
+        ChoiceQuestion choiceQuestion = new ChoiceQuestion();
+        choiceQuestion.setText("What is your Age");
+        choiceQuestion.addChoice("10", false);
+        choiceQuestion.addChoice("20", true);
+        choiceQuestion.addChoice("30", false);
 
-        Question question2 = new Question("Question Text", "Answer 2");
-        question2.addChoice("Answer 1", false);
-        question2.addChoice("Answer 2", false);
-        question2.display();
-
-        System.out.println(question2.checkAnswer("Answer 2"));
+        choiceQuestion.display();
+        System.out.print("Enter Correct Answer: ");
+        String input = scanner.nextLine();
+        if(choiceQuestion.checkAnswer(input))
+            System.out.println("Correct Answer!");
+            else
+            System.out.println("Wrong Answer!");
     }
 }
 

@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-class ChoiceQuestion {
+class ChoiceQuestion extends Question{
     private ArrayList<String> choices;
 
     ChoiceQuestion() {
@@ -13,11 +13,13 @@ class ChoiceQuestion {
 
     public void addChoice(String c, boolean b) {
         this.choices.add(c);
+        if(b)
+            super.setAnswer(c);
     }
 
     public void display() {
-        for (String choice : this.choices) {
-            System.out.printf("* %s\n", choice);
-        }
+        super.display();
+        for (String choice : this.choices)
+            System.out.println(choice);
     }
 }
