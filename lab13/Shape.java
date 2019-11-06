@@ -36,12 +36,6 @@ public abstract class Shape {
         return 1;
     }
 
-    public static void display(ArrayList<Shape> shapes){
-        for(Shape sh: shapes){
-            System.out.println(sh.getArea());
-        }
-    }
-
     public String toString() {
         return "Shape";
     }
