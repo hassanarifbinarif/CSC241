@@ -8,5 +8,14 @@ public class Main {
         shapes.add(rect);
         shapes.add(square);
         shapes.add(circle);
+        
+        display(shapes);
+    }
+    
+    
+    private static void display(ArrayList<Shape> shapes){
+        for(Shape shape: shapes){
+            System.out.println(shape.getArea());
+        }
     }
 }
