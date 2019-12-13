@@ -1,0 +1,104 @@
+public interface StateManager {
+    void changeState(boolean status);
+    void reset();
+}
+
+public abstract class Item implements StateManager {
+    private int id;
+    private String name;
+
+    public Item() {
+    }
+
+    public Item(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Item Name: " + this.name +"(" + this.id + ")";
+    }
+}
+
+public class PrescriptionItem extends Item {
+    private int potency;
+    private int dose;
+    private boolean currentStatus;
+
+    public PrescriptionItem() {
+        super();
+    }
+
+    public PrescriptionItem(int id, String name, int potency, int dose) {
+        super(id, name);
+        this.potency = potency;
+        this.dose = dose;
+    }
+
+    @Override
+    public void changeState(boolean status) {
+        this.currentStatus = status;
+    }
+
+    @Override
+    public void reset() {
+        this.currentStatus = false;
+    }
+}
+
+public class InvoiceItem extends Item {
+    private float price;
+    private int quantity;
+    private float discount;
+    private boolean Availability;
+
+    public InvoiceItem(int id, String name, float price, int quantity, float discount, boolean availability) {
+        super(id, name);
+        this.price = price;
+        this.quantity = quantity;
+        this.discount = discount;
+        this.Availability = availability;
+    }
+
+    @Override
+    public void changeState(boolean status) {
+        this.Availability = status;
+    }
+
+    @Override
+    public void reset() {
+        this.Availability = false;
+    }
+
+    public float computePrice(){
+        if(Availability == true)
+            return (this.price * this.quantity) * (1 - this.discount/100);
+        else
+            return 0;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "   Price: " + this.price + "    Quantity: " + this.quantity +
+                "    Total: " + computePrice() + " (@" + this.discount + "% discount)";
+    }
+}
+
+public class ItemTester {
+    public static void main(String[] args) {
+        Item ip1 = new PrescriptionItem(1,"Augmentin", 3, 2 );
+        ip1.changeState(true);
+        System.out.println(ip1.toString());
+
+        Item ip2 = new PrescriptionItem(2, "Sodium Cyanide", 1000, 1);
+        System.out.println(ip2.toString());
+
+        Item it1 = new InvoiceItem(3, "Potassium Permanganate", 100, 100, 5,true);
+        System.out.println(it1.toString());
+
+        Item it2 = new InvoiceItem(4, "Hydrochloric Acid", 50, 50, 10, false);
+        it2.changeState(true);
+        System.out.println(it2.toString());
+    }
+}
